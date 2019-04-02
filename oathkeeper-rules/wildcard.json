@@ -1,26 +1,20 @@
 [
   {
-    "id": "${OATHKEEPER_RESOURCE_PREFIX}rules:test",
+    "id": "${OATHKEEPER_RESOURCE_PREFIX}rules:test:wildcard",
     "upstream": {
       "url": "http://localhost:8080/"
     },
     "match": {
-      "url": "${PROXY_URL}/<.*>",
+      "url": "${OATHKEEPER_PROXY_URL}<.*>",
       "methods": [
         "GET"
       ]
     },
-    "authenticators": [
-      {
-        "handler": "oauth2_introspection",
-        "config": {
-          "required_scope": [
-            "hydra.clients"
-          ]
-        }
-      }
-    ],
-     "authorizer": {
+    "authenticators": [{
+      "handler": "oauth2_introspection",
+      "config": {}
+    }],
+    "authorizer": {
       "handler": "allow"
     },
     "credentials_issuer": {
