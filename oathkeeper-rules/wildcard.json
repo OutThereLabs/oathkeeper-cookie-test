@@ -1,0 +1,30 @@
+[
+  {
+    "id": "${OATHKEEPER_RESOURCE_PREFIX}rules:test",
+    "upstream": {
+      "url": "http://localhost:8080/"
+    },
+    "match": {
+      "url": "${PROXY_URL}/<.*>",
+      "methods": [
+        "GET"
+      ]
+    },
+    "authenticators": [
+      {
+        "handler": "oauth2_introspection",
+        "config": {
+          "required_scope": [
+            "hydra.clients"
+          ]
+        }
+      }
+    ],
+     "authorizer": {
+      "handler": "allow"
+    },
+    "credentials_issuer": {
+      "handler": "noop"
+    }
+  }
+]
