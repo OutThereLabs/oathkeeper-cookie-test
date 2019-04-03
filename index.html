@@ -2,36 +2,16 @@
 
 <head>
   <title>OAuth Test</title>
+  <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
 </head>
 
 <body>
   <h1>Cookie Test</h1>
+  <h2>Cookie</h2>
   <pre id="cookie">...</pre>
-  <script type="text/javascript">
-    document.getElementById("cookie").innerHTML = document.cookie;
-  </script>
-  <script type="text/javascript">
-    fetch('/v1/web3/mainnet', {
-        method: "POST",
-        credentials: "include",
-        headers: {
-            'Accept': 'application/json, text/plain, */*',
-            'Content-Type': 'application/json'
-        },
-        body: {
-          "jsonrpc":"2.0",
-          "method":"eth_accounts",
-          "params":[],
-          "id":1
-        }
-    })
-    .then(function(response) {
-        return response.json();
-    })
-    .then(function(accounts) {
-        document.getElementById("accounts").innerHTML = JSON.stringify(accounts);
-    });
-  </script>
+  <h2>Accounts</h2>
+  <pre id="accounts">...</pre>
+  <script src="app.js"></script>
 </body>
 
 </html>
